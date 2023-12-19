@@ -27,8 +27,8 @@ export const DestinoFiltro = ({data, setDadosFiltrados}) => {
         onChange={selecionaMudanca}>
             <option value={""}> selecione um tipo de destino para filtrar... </option>
             {tiposDestino.map((type, index) => (
-                <option key={index} value={type}>
-                    {type}
+                <option key={index} value={String (type)}>
+                {String (type)}
                 </option>
             ))}
         </select>
