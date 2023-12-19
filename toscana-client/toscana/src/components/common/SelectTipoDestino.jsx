@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { getTiposDestino } from '../utils/ApiFuncoes';
 
 const SelectTipoDestino = ({ handleDestinoInputChange, novoDestino }) => {
-  const [tiposDestino, setTiposDestino] = useState([]);
+  const [tiposDestino, setTiposDestino] = useState([""]);
   const [mNovaEntradaTipoDestino, setMNovaEntradaTipoDestino] = useState(false);
-  const [novoTipoDestino, setNovoTipoDestino] = useState('');
+  const [novoTipoDestino, setNovoTipoDestino] = useState("");
 
   useEffect(() => {
     getTiposDestino().then((data) => {
@@ -19,29 +19,29 @@ const SelectTipoDestino = ({ handleDestinoInputChange, novoDestino }) => {
   const handleAddNovoTipoDestino = () => {
     if (novoTipoDestino !== '') {
       setTiposDestino([...tiposDestino, novoTipoDestino]);
-      setNovoTipoDestino('');
+      setNovoTipoDestino("");
       setMNovaEntradaTipoDestino(false);
     }
-  };
+  }
 
   return (
     <>
       {tiposDestino.length > 0 && (
         <div>
           <select
-            id="tipoDestino"
+            required
+            className="form-select"
             name="tipoDestino"
-            value={novoDestino.tipoDestino}
             onChange={(e) => {
-              if (e.target.value === 'Adiciona Novo') {
+              if (e.target.value === "Adiciona Novo") {
                 setMNovaEntradaTipoDestino(true);
               } else {
-                handleDestinoInputChange(e); // Corrigido aqui
+                handleDestinoInputChange(e); 
               }
             }}
-          >
-            <option value={''}>Seleciona um tipo de destino</option>
-            <option value={'Adiciona Novo'}>Adiciona Novo</option>
+            value={novoDestino.tipoDestino}>
+            <option value="">Seleciona um tipo de destino</option>
+            <option value={"Adiciona Novo"}>Adiciona Novo</option>
             {tiposDestino.map((type, index) => (
               <option key={index} value={type}>
                 {type}
@@ -49,11 +49,13 @@ const SelectTipoDestino = ({ handleDestinoInputChange, novoDestino }) => {
             ))}
           </select>
           {mNovaEntradaTipoDestino && (
+            <div className="mt-2">
             <div className="input-group">
               <input
-                className="form-control"
                 type="text"
+                className="form-control"
                 placeholder="Insira um novo tipo de destino"
+                value={novoTipoDestino}
                 onChange={handleNovaEntradaTipoDestinoChange}
               />
               <button
@@ -64,6 +66,7 @@ const SelectTipoDestino = ({ handleDestinoInputChange, novoDestino }) => {
                 Adicionar
               </button>
             </div>
+          </div>
           )}
         </div>
       )}

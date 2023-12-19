@@ -18,11 +18,20 @@ export async function addDestino(foto, tipoDestino, precoDestino){
     }
 }
 /** Esta função obtém todos os tipos de destinos do banco de dados */
-export async function getTiposDestino(){
-    try{
-        const response = await api.get("/destinos/tipos-destino")
-        return response.data
-    }catch (Error){
-     throw new Error("Erro ao buscar tipos de destinos")
+export async function getTiposDestino() {
+    try {
+      const response = await api.get("/destinos/destino/tipos");
+      return response.data;
+    } catch (Error) {
+      throw new Error("Erro ao buscar tipos de destinos");
     }
-}
+  }
+/**Essa função obtém todas os destinos do banco de dados */
+  export async function getTodosDestinos(){
+    try{
+        const result = await api.get("/destinos/todos-destinos")
+        return result.data
+    }catch(error){
+        throw new Error("Erro ao buscar destinos")
+    }
+  }

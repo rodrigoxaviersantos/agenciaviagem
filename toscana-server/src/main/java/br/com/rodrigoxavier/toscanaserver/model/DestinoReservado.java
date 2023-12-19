@@ -64,4 +64,17 @@ public class DestinoReservado {
     public DestinoReservado(String codigoConfirmaReserva) {
         this.codigoConfirmaReserva = codigoConfirmaReserva;
     }
+
+
+    public LocalDate getCheckInDate() {
+        return null;
+    }
+
+    public LocalDate getCheckOutDate() {
+        return null;
+    }
+
+    public String getReservadoConfirmaCodigo() {
+        return null;
+    }
 }

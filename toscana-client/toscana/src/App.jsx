@@ -4,11 +4,10 @@ import "bootstrap/dist/js/bootstrap.min.js";  // Remova a barra invertida no in√
 import AddDestino from './components/destino/AddDestino';
 
 function App() {
-  return (
-    <>
+  return <>
       <AddDestino/>
     </>
-  );
+  
 }
 
 export default App;
